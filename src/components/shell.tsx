@@ -4,6 +4,8 @@ import { cn } from "@/lib/utils";
 const nav = [
   { to: "/", label: "마켓" },
   { to: "/kang", label: "강환국" },
+  { to: "/largecap", label: "대형" },
+  { to: "/midcap", label: "중형" },
   { to: "/watchlist", label: "스몰캡" },
   { to: "/backtest", label: "백테스트" },
   { to: "/guide", label: "방법론" },
