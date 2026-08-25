@@ -14,6 +14,8 @@ import { Route as BacktestRouteImport } from './routes/backtest'
 import { Route as GuideRouteImport } from './routes/guide'
 import { Route as KangRouteImport } from './routes/kang'
 import { Route as WatchlistRouteImport } from './routes/watchlist'
+import { Route as LargecapRouteImport } from './routes/largecap'
+import { Route as MidcapRouteImport } from './routes/midcap'
 import { Route as StockCodeRouteImport } from './routes/stock.$code'
 
 const IndexRoute = IndexRouteImport.update({
@@ -41,6 +43,16 @@ const WatchlistRoute = WatchlistRouteImport.update({
   path: '/watchlist',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LargecapRoute = LargecapRouteImport.update({
+  id: '/largecap',
+  path: '/largecap',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MidcapRoute = MidcapRouteImport.update({
+  id: '/midcap',
+  path: '/midcap',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const StockCodeRoute = StockCodeRouteImport.update({
   id: '/stock/$code',
   path: '/stock/$code',
@@ -53,6 +65,8 @@ export interface FileRoutesByFullPath {
   '/guide': typeof GuideRoute
   '/kang': typeof KangRoute
   '/watchlist': typeof WatchlistRoute
+  '/largecap': typeof LargecapRoute
+  '/midcap': typeof MidcapRoute
   '/stock/$code': typeof StockCodeRoute
 }
 export interface FileRoutesByTo {
@@ -61,6 +75,8 @@ export interface FileRoutesByTo {
   '/guide': typeof GuideRoute
   '/kang': typeof KangRoute
   '/watchlist': typeof WatchlistRoute
+  '/largecap': typeof LargecapRoute
+  '/midcap': typeof MidcapRoute
   '/stock/$code': typeof StockCodeRoute
 }
 export interface FileRoutesById {
@@ -70,14 +86,16 @@ export interface FileRoutesById {
   '/guide': typeof GuideRoute
   '/kang': typeof KangRoute
   '/watchlist': typeof WatchlistRoute
+  '/largecap': typeof LargecapRoute
+  '/midcap': typeof MidcapRoute
   '/stock/$code': typeof StockCodeRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/backtest' | '/guide' | '/kang' | '/watchlist' | '/stock/$code'
+  fullPaths: '/' | '/backtest' | '/guide' | '/kang' | '/watchlist' | '/largecap' | '/midcap' | '/stock/$code'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/backtest' | '/guide' | '/kang' | '/watchlist' | '/stock/$code'
-  id: '__root__' | '/' | '/backtest' | '/guide' | '/kang' | '/watchlist' | '/stock/$code'
+  to: '/' | '/backtest' | '/guide' | '/kang' | '/watchlist' | '/largecap' | '/midcap' | '/stock/$code'
+  id: '__root__' | '/' | '/backtest' | '/guide' | '/kang' | '/watchlist' | '/largecap' | '/midcap' | '/stock/$code'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -86,6 +104,8 @@ export interface RootRouteChildren {
   GuideRoute: typeof GuideRoute
   KangRoute: typeof KangRoute
   WatchlistRoute: typeof WatchlistRoute
+  LargecapRoute: typeof LargecapRoute
+  MidcapRoute: typeof MidcapRoute
   StockCodeRoute: typeof StockCodeRoute
 }
 
@@ -126,6 +146,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WatchlistRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/largecap': {
+      id: '/largecap'
+      path: '/largecap'
+      fullPath: '/largecap'
+      preLoaderRoute: typeof LargecapRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/midcap': {
+      id: '/midcap'
+      path: '/midcap'
+      fullPath: '/midcap'
+      preLoaderRoute: typeof MidcapRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/stock/$code': {
       id: '/stock/$code'
       path: '/stock/$code'
@@ -142,6 +176,8 @@ const rootRouteChildren: RootRouteChildren = {
   GuideRoute: GuideRoute,
   KangRoute: KangRoute,
   WatchlistRoute: WatchlistRoute,
+  LargecapRoute: LargecapRoute,
+  MidcapRoute: MidcapRoute,
   StockCodeRoute: StockCodeRoute,
 }
 export const routeTree = rootRouteImport
