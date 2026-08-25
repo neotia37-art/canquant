@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as BacktestRouteImport } from './routes/backtest'
 import { Route as GuideRouteImport } from './routes/guide'
+import { Route as KangRouteImport } from './routes/kang'
 import { Route as StockCodeRouteImport } from './routes/stock.$code'
 
 const IndexRoute = IndexRouteImport.update({
@@ -29,6 +30,11 @@ const GuideRoute = GuideRouteImport.update({
   path: '/guide',
   getParentRoute: () => rootRouteImport,
 } as any)
+const KangRoute = KangRouteImport.update({
+  id: '/kang',
+  path: '/kang',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const StockCodeRoute = StockCodeRouteImport.update({
   id: '/stock/$code',
   path: '/stock/$code',
@@ -39,12 +45,14 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/backtest': typeof BacktestRoute
   '/guide': typeof GuideRoute
+  '/kang': typeof KangRoute
   '/stock/$code': typeof StockCodeRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/backtest': typeof BacktestRoute
   '/guide': typeof GuideRoute
+  '/kang': typeof KangRoute
   '/stock/$code': typeof StockCodeRoute
 }
 export interface FileRoutesById {
@@ -52,20 +60,22 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/backtest': typeof BacktestRoute
   '/guide': typeof GuideRoute
+  '/kang': typeof KangRoute
   '/stock/$code': typeof StockCodeRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/backtest' | '/guide' | '/stock/$code'
+  fullPaths: '/' | '/backtest' | '/guide' | '/kang' | '/stock/$code'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/backtest' | '/guide' | '/stock/$code'
-  id: '__root__' | '/' | '/backtest' | '/guide' | '/stock/$code'
+  to: '/' | '/backtest' | '/guide' | '/kang' | '/stock/$code'
+  id: '__root__' | '/' | '/backtest' | '/guide' | '/kang' | '/stock/$code'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BacktestRoute: typeof BacktestRoute
   GuideRoute: typeof GuideRoute
+  KangRoute: typeof KangRoute
   StockCodeRoute: typeof StockCodeRoute
 }
 
@@ -92,6 +102,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GuideRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/kang': {
+      id: '/kang'
+      path: '/kang'
+      fullPath: '/kang'
+      preLoaderRoute: typeof KangRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/stock/$code': {
       id: '/stock/$code'
       path: '/stock/$code'
@@ -106,6 +123,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BacktestRoute: BacktestRoute,
   GuideRoute: GuideRoute,
+  KangRoute: KangRoute,
   StockCodeRoute: StockCodeRoute,
 }
 export const routeTree = rootRouteImport
