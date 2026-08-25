@@ -212,7 +212,7 @@ export function CapUniversePage({ config }: { config: CapUniverseConfig }) {
         ) : null}
         {rankError ? <p className="mt-2 text-xs text-down">{rankError}</p> : null}
         <p className="mt-2 text-xs text-subtle">
-          판정: strong≥72 · buy≥58 · avoid<42. 순위는 연구용이며 매수 신호가 아닙니다.
+          판정: strong≥72 · buy≥58 · avoid 미만 42. 순위는 연구용이며 매수 신호가 아닙니다.
         </p>
       </Panel>
 
