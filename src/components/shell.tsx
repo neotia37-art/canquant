@@ -3,6 +3,7 @@ import { cn } from "@/lib/utils";
 
 const nav = [
   { to: "/", label: "마켓" },
+  { to: "/kang", label: "강환국" },
   { to: "/backtest", label: "백테스트" },
   { to: "/guide", label: "방법론" },
 ];
